@@ -15,7 +15,7 @@
     {{/each}}
   </div>
 
-  {{!-- <BackgroundCanvas @height={{this.height}} @width={{this.width}} /> --}}
+  <BackgroundCanvas @parentSprite={{this.workspaceSprite}} />
 
   <div local-class="anchor-center">
     {{#each this.layers as |layer|}}

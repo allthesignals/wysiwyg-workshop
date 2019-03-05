@@ -10,6 +10,7 @@ const { abs } = Math;
 @tagName('')
 export default class BackgroundCanvasComponent extends Component {
   isDrawingBox = false;
+  parentSprite = Sprite.fromDimensions({ h: 10, w: 10 });
   startPosition = [0, 0];
   currentOffset = [0, 0];
 
@@ -20,13 +21,14 @@ export default class BackgroundCanvasComponent extends Component {
   @service layerState;
 
   generateSelectionSprite(offsetParent, dimensions) {
+    const { parentSprite, startPosition } = this;
     const parentBox = offsetParent.getBoundingClientRect();
-    const [startX, startY] = this.startPosition;
+    const [startX, startY] = startPosition;
     const [w, h] = dimensions;
-    const x = startX - parentBox.width / 2 + this.width / 2;
-    const y = startY - parentBox.height / 2 + this.height / 2;
+    const x = startX - parentBox.width / 2;
+    const y = startY - parentBox.height / 2;
 
-    return Sprite.fromDimensions({ x, y, w, h });
+    return Sprite.fromDimensions({ x, y, w, h }).subtract(parentSprite);
   }
 
   @action
