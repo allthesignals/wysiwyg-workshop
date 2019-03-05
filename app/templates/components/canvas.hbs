@@ -4,20 +4,20 @@
     <div
       data-test-canvas
       local-class="canvas"
-      {{styles this.backgroundStyles}}
+      {{sprite-styles this.workspaceSprite}}
     ></div>
 
-    {{#each this.layers as |layer|}}
+    {{!-- {{#each this.layers as |layer|}}
       <RenderedLayer @layer={{layer}} />
-    {{/each}}
+    {{/each}} --}}
   </div>
 
-  <BackgroundCanvas @height={{this.height}} @width={{this.width}} />
+  {{!-- <BackgroundCanvas @height={{this.height}} @width={{this.width}} /> --}}
 
-  <div local-class="anchor-center" {{styles this.backgroundStyles}}>
-    {{#each this.layers as |layer|}}
+  <div local-class="anchor-center">
+    {{!-- {{#each this.layers as |layer|}}
       <InteractiveLayer @layer={{layer}} />
-    {{/each}}
+    {{/each}} --}}
   </div>
 
   <CanvasPan
