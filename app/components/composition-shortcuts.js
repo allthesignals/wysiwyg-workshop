@@ -21,8 +21,16 @@ export default class CompositionShortcutsComponent extends Component {
   }
 
   @action
-  nudge(dx, dy) {
-    const delta = new Vector([dx, dy]);
+  nudge(dx, dy, event) {
+    let delta = new Vector([dx, dy]);
+
+    if (event.shiftKey) {
+      delta = delta.scale(5);
+    }
+
+    if (event.metaKey) {
+      delta = delta.scale(5);
+    }
 
     for (const layer of this.layerSelection.selectedLayers) {
       const sprite = layer.sprite.translate(delta);
