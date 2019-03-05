@@ -3,7 +3,7 @@ import { set } from '@ember/object';
 import { tagName } from '@ember-decorators/component';
 import { computed, action } from '@ember-decorators/object';
 import { inject as service } from '@ember-decorators/service';
-import { RIGHT } from '../utils/sprites';
+import { TOP, BOTTOM, RIGHT, LEFT } from '../utils/sprites';
 
 const SPACEBAR = 32;
 
@@ -11,6 +11,17 @@ const SPACEBAR = 32;
 export default class InteractiveLayerComponent extends Component {
   @service layerSelection;
   @service layerState;
+
+  directions = [
+    { name: 'top', handles: [TOP] },
+    { name: 'top-right', handles: [TOP, RIGHT] },
+    { name: 'right', handles: [RIGHT] },
+    { name: 'bottom-right', handles: [BOTTOM, RIGHT] },
+    { name: 'bottom', handles: [BOTTOM] },
+    { name: 'bottom-left', handles: [BOTTOM, LEFT] },
+    { name: 'left', handles: [LEFT] },
+    { name: 'top-left', handles: [TOP, LEFT] }
+  ];
 
   @action
   handleKeyDown(e) {
@@ -40,11 +51,11 @@ export default class InteractiveLayerComponent extends Component {
   }
 
   @action
-  resize({ event, offset }) {
+  resize(handles, { event, offset }) {
     const { layer } = this;
     const { type, shiftKey, metaKey } = event;
 
-    const sprite = layer.sprite.transformSize(offset, [RIGHT], {
+    const sprite = layer.sprite.transformSize(offset, handles, {
       applyOpposite: !!metaKey,
       keepRatio: !!shiftKey
     });

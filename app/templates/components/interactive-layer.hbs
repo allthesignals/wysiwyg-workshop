@@ -14,11 +14,14 @@
   ></button>
 
   {{#if this.isSelected}}
-    <button
-      local-class="handle handle-right"
-      aria-label="Resize layer by the right handle"
-      data-test-handle="right"
-      {{drag this.resize "right"}}
-    ></button>
+    {{#each directions as |direction|}}
+      <button
+        local-class="handle"
+        aria-label={{concat "Resize layer by the " direction.name " handle"}}
+        data-test-handle={{direction.name}}
+        class={{local-class (concat "handle-" direction.name)}}
+        {{drag (action this.resize direction.handles) direction.name}}
+      ></button>
+    {{/each}}
   {{/if}}
 </div>
