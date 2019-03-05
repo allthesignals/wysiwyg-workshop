@@ -3,7 +3,7 @@ import { set } from '@ember/object';
 import { tagName } from '@ember-decorators/component';
 import { computed, action } from '@ember-decorators/object';
 import { inject as service } from '@ember-decorators/service';
-import { TOP, BOTTOM, RIGHT, LEFT } from '../utils/sprites';
+import { Sprite, TOP, BOTTOM, RIGHT, LEFT } from '../utils/sprites';
 
 const SPACEBAR = 32;
 
@@ -11,6 +11,8 @@ const SPACEBAR = 32;
 export default class InteractiveLayerComponent extends Component {
   @service layerSelection;
   @service layerState;
+
+  parentSprite = Sprite.fromDimensions({ w: 100, h: 100 });
 
   directions = [
     { name: 'top', handles: [TOP] },
@@ -35,18 +37,17 @@ export default class InteractiveLayerComponent extends Component {
 
   @action
   rotate({ event, offset }) {
-    const { layer } = this;
+    const parent = this.parentAdjustedSprite;
     const { type, shiftKey, metaKey } = event;
 
-    const sprite = layer.sprite.transformRotation(offset, [TOP, LEFT], {
+    const sprite = parent.transformRotation(offset, [TOP, LEFT], {
       clampPercent: shiftKey || metaKey
     });
 
     set(this, 'offsetSprite', sprite);
 
     if (type === 'mouseup') {
-      this.layerState.updateLayer(layer, { sprite });
-      set(this, 'offsetSprite', null);
+      this.finalizeLayerUpdate(sprite);
     }
   }
 
@@ -56,23 +57,21 @@ export default class InteractiveLayerComponent extends Component {
       return;
     }
 
-    const { layer } = this;
-    const sprite = layer.sprite.translate(offset);
+    const sprite = this.parentAdjustedSprite.translate(offset);
 
     set(this, 'offsetSprite', sprite);
 
     if (event.type === 'mouseup') {
-      this.layerState.updateLayer(layer, { sprite });
-      set(this, 'offsetSprite', null);
+      this.finalizeLayerUpdate(sprite);
     }
   }
 
   @action
   resize(handles, { event, offset }) {
-    const { layer } = this;
+    const parent = this.parentAdjustedSprite;
     const { type, shiftKey, metaKey } = event;
 
-    const sprite = layer.sprite.transformSize(offset, handles, {
+    const sprite = parent.transformSize(offset, handles, {
       applyOpposite: !!metaKey,
       keepRatio: !!shiftKey
     });
@@ -80,9 +79,22 @@ export default class InteractiveLayerComponent extends Component {
     set(this, 'offsetSprite', sprite);
 
     if (type === 'mouseup') {
-      this.layerState.updateLayer(layer, { sprite });
-      set(this, 'offsetSprite', null);
+      this.finalizeLayerUpdate(sprite);
     }
+  }
+
+  finalizeLayerUpdate(offsetSprite) {
+    const { layer, parentSprite } = this;
+    const sprite = offsetSprite.subtract(parentSprite);
+
+    this.layerState.updateLayer(layer, { sprite });
+    set(this, 'offsetSprite', null);
+  }
+
+  @computed('layer.sprite', 'parentSprite')
+  get parentAdjustedSprite() {
+    const { parentSprite, layer } = this;
+    return layer.sprite.add(parentSprite);
   }
 
   @action
@@ -95,9 +107,9 @@ export default class InteractiveLayerComponent extends Component {
     return this.layerSelection.selectedLayers.includes(this.layer);
   }
 
-  @computed('{offsetSprite,layer.sprite}')
+  @computed('{isSelected,offsetSprite,parentAdjustedSprite}')
   get currentSprite() {
-    const { layer, offsetSprite } = this;
-    return offsetSprite ? offsetSprite : layer.sprite;
+    const { parentAdjustedSprite, isSelected, offsetSprite } = this;
+    return isSelected && offsetSprite ? offsetSprite : parentAdjustedSprite;
   }
 }

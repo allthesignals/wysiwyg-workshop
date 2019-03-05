@@ -18,9 +18,12 @@
   {{!-- <BackgroundCanvas @height={{this.height}} @width={{this.width}} /> --}}
 
   <div local-class="anchor-center">
-    {{!-- {{#each this.layers as |layer|}}
-      <InteractiveLayer @layer={{layer}} />
-    {{/each}} --}}
+    {{#each this.layers as |layer|}}
+      <InteractiveLayer
+        @layer={{layer}}
+        @parentSprite={{this.workspaceSprite}}
+      />
+    {{/each}}
   </div>
 
   <CanvasPan
