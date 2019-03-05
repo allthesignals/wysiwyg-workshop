@@ -1,2 +1,13 @@
-<div local-class="layer" {{sprite-styles this.layer.sprite}}>
+<div
+  local-class="layer"
+  class={{if this.isSelected (local-class "layer-selected")}}
+  {{sprite-styles this.layer.sprite}}
+>
+  <button
+    data-test-interactive-layer
+    tabindex="0"
+    local-class="layer-selector"
+    aria-label="Select layer to move"
+    onclick={{action this.selectLayer}}
+  ></button>
 </div>
