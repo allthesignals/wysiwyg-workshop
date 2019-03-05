@@ -1,4 +1,28 @@
 <Shortcut
+  @key="command+a"
+  @down={{action this.selectAllTags}}
+/>
+<Shortcut
+  @key="esc"
+  @down={{action this.deselectAllTags}}
+/>
+<Shortcut
+  @key="right"
+  @down={{action this.nudge 1 0}}
+/>
+<Shortcut
+  @key="left"
+  @down={{action this.nudge -1 0}}
+/>
+<Shortcut
+  @key="down"
+  @down={{action this.nudge 0 1}}
+/>
+<Shortcut
+  @key="up"
+  @down={{action this.nudge 0 -1}}
+/>
+<Shortcut
   @key="delete,backspace"
   @down={{action this.deleteSelected}}
 />
