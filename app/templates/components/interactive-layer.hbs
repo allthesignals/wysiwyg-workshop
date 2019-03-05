@@ -1,7 +1,7 @@
 <div
   local-class="layer"
   class={{if this.isSelected (local-class "layer-selected")}}
-  {{sprite-styles this.layer.sprite}}
+  {{sprite-styles this.currentSprite}}
 >
   <button
     data-test-interactive-layer
@@ -10,5 +10,6 @@
     aria-label="Select layer to move"
     onkeydown={{action this.handleKeyDown}}
     onmousedown={{action this.selectLayer}}
+    {{drag this.translate "layer-drag"}}
   ></button>
 </div>
