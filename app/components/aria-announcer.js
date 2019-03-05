@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { tagName } from '@ember-decorators/component';
 import { inject as service } from '@ember-decorators/service';
 
-const ENABLE_DEBUG_MODE = false;
+const ENABLE_DEBUG_MODE = true;
 
 @tagName('')
 export default class AriaAnnouncer extends Component {
