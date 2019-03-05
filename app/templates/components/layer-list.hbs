@@ -7,16 +7,19 @@
           local-class="layer"
           class={{if selected (local-class "layer-selected")}}
         >
-          <span
+          <button
             data-test-layer={{index}}
             data-test-layer-selected={{selected}}
+            local-class="select-button"
+            aria-label={{concat "Select layer " index (if selected " Currently Selected")}}
+            onclick={{action this.selectLayer layer}}
           >
             {{#if layer.label}}
               {{layer.label}}
             {{else}}
               Layer {{index}}
             {{/if}}
-          </span>
+          </button>
         </li>
       {{/let}}
     {{/each}}
