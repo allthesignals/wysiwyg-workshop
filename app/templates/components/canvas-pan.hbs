@@ -1,1 +1,14 @@
-{{yield}}
+<Shortcut
+  @key="space"
+  @down={{action this.startPanning}}
+  @up={{action this.stopPanning}}
+  @preventDefault={{false}}
+/>
+
+{{#if this.isPanning}}
+  <div
+    data-test-canvas-pan
+    {{drag this.pan}}
+    ...attributes
+  ></div>
+{{/if}}

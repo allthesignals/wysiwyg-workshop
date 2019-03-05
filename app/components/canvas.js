@@ -16,8 +16,8 @@ export default class CanvasComponent extends Component {
   workspaceZoom = 1;
 
   @action
-  updateTranslation(/* offset */) {
-    // TODO: Handle translation
+  updateTranslation(offset) {
+    set(this, 'workspaceTranslation', offset);
   }
 
   @action
