@@ -34,6 +34,23 @@ export default class InteractiveLayerComponent extends Component {
   }
 
   @action
+  rotate({ event, offset }) {
+    const { layer } = this;
+    const { type, shiftKey, metaKey } = event;
+
+    const sprite = layer.sprite.transformRotation(offset, [TOP, LEFT], {
+      clampPercent: shiftKey || metaKey
+    });
+
+    set(this, 'offsetSprite', sprite);
+
+    if (type === 'mouseup') {
+      this.layerState.updateLayer(layer, { sprite });
+      set(this, 'offsetSprite', null);
+    }
+  }
+
+  @action
   translate({ event, offset }) {
     if (!this.isSelected) {
       return;

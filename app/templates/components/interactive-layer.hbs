@@ -23,5 +23,13 @@
         {{drag (action this.resize direction.handles) direction.name}}
       ></button>
     {{/each}}
+
+    <button
+      local-class="handle"
+      aria-label="Rotate the layer"
+      data-test-handle="rotate"
+      class={{local-class "handle-rotate"}}
+      {{drag this.rotate "rotate"}}
+    ></button>
   {{/if}}
 </div>
