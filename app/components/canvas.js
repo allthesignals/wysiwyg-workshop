@@ -21,8 +21,9 @@ export default class CanvasComponent extends Component {
   }
 
   @action
-  updateZoom(/* amount */) {
-    // TODO: Handle Zoom.
+  updateZoom(amount) {
+    const zoom = this.workspaceZoom;
+    set(this, 'workspaceZoom', zoom + amount);
   }
 
   @reads('layerState.layers') layers;

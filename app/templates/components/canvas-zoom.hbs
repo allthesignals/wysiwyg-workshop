@@ -1,1 +1,23 @@
-{{yield}}
+<Shortcut @key="command+=" @down={{action this.increment 0.1}} />
+<Shortcut @key="command+-" @down={{action this.increment -0.1}} />
+<Shortcut @key="command+0" @down={{action @action 1}} />
+
+<div local-class="canvas-zoom" data-test-canvas-zoom ...attributes>
+  <button
+    local-class="button"
+    data-test-zoom-in
+    {{action this.increment 0.1}}
+  >
+    &plus;
+  </button>
+  <p local-class="percent-text" data-test-zoom-percent>
+    {{this.formattedPercent}}
+  </p>
+  <button
+    local-class="button"
+    data-test-zoom-out
+    {{action this.increment -0.1}}
+  >
+    &minus;
+  </button>
+</div>
