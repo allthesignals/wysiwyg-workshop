@@ -1,0 +1,14 @@
+.canvas {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.selection-box {
+  position: absolute;
+  border: 1px dotted var(--neutral-700);
+  left: 0;
+  top: 0;
+}

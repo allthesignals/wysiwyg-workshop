@@ -1,0 +1,47 @@
+.canvas-workspace {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.anchor-center {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.canvas {
+  background: var(--neutral-100);
+  border: 1px solid var(--neutral-500);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.hidden-canvas {
+  background: none;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.pan-tool {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.canvas-zoom {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+}
+
+.canvas-tools {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}

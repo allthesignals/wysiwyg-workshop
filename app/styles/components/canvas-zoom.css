@@ -1,0 +1,31 @@
+.canvas-zoom {
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--neutral-100);
+  display: inline-flex;
+  padding: 0.5rem;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.percent-text {
+  margin: 0 0.25rem;
+  font-weight: 200;
+  font-size: 0.8rem;
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.button {
+  --button-size: 1.5rem;
+  background: var(--neutral-600);
+  color: var(--neutral-100);
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: var(--button-size);
+  width: var(--button-size);
+  border-radius: var(--button-size);
+}

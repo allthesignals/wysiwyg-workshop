@@ -1,0 +1,36 @@
+.layer-properties-container {
+  composes: layer-list-container from './layer-list';
+}
+
+.properties-header {
+  composes: layer-header from './layer-list';
+}
+
+.properties-panel {
+  display: grid;
+  grid-template-columns: [left] 1fr [center] 1fr [right] 1fr;
+  grid-auto-rows: auto;
+  grid-gap: var(--padding-amount) var(--padding-amount);
+  padding: var(--padding-amount);
+}
+
+.left, .center, .right {
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  grid-column-start: left;
+}
+
+.center {
+  grid-column-start: center;
+}
+
+.right {
+  grid-column-start: right;
+}
+
+.row {
+  display: contents;
+}

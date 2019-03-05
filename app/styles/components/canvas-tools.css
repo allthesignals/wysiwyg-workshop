@@ -1,0 +1,46 @@
+.canvas-tools {
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--neutral-100);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border-radius: 1rem;
+  list-style: none;
+  overflow: hidden;
+}
+
+.tool {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--neutral-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tool:first-child {
+  padding-top: 0.75rem;
+}
+
+.tool:last-child {
+  border-bottom: none;
+  padding-bottom: 0.75rem;
+}
+
+.tool:hover {
+  background: rgba(4, 21, 50, 0.7);
+}
+
+.tool.tool-active {
+  background: var(--blue-400);
+}
+
+.tool-icon {
+  fill: var(--neutral-100);;
+}
+
+

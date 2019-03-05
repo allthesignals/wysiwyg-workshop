@@ -1,0 +1,23 @@
+<div data-test-layer-properties-input ...attributes>
+  <label
+    for={{this.inputId}}
+    local-class="input-label left"
+  >
+    {{@label}}
+  </label>
+  <div local-class="center">
+    <input
+      local-class="std-input"
+      value={{readonly @value}}
+      id={{this.inputId}}
+      oninput={{action @update value="target.value"}}
+      type="text"
+    >
+  </div>
+
+  {{#if this.hasBlock}}
+    <div local-class="right">
+      {{yield}}
+    </div>
+  {{/if}}
+</div>

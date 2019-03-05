@@ -1,0 +1,14 @@
+<div local-class="canvas-tools" ...attributes>
+  {{#each this.tools as |tool|}}
+    <button
+      local-class="tool"
+      class={{if (eq tool this.selectedTool) (local-class "tool-active")}}
+      aria-label={{tool.description}}
+      data-test-tool={{tool.name}}
+      data-test-tool-selected={{eq tool this.selectedTool}}
+      onclick={{action this.chooseTool tool}}
+    >
+      {{svg-jar tool.icon class=(local-class "tool-icon")}}
+    </button>
+  {{/each}}
+</div>

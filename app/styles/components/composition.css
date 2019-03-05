@@ -1,0 +1,78 @@
+.composition {
+  composes: app-layout from '../application';
+}
+
+.header {
+  composes: header from '../application';
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: [left] 1fr [center] auto [right] 1fr;
+  padding: 0 0.5rem;;
+}
+
+.header-center {
+  color: var(--neutral-700);
+  grid-column: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 1rem;
+  display: inline;
+}
+
+.actions {
+  grid-column: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.edit-state {
+  color: var(--neutral-500);
+}
+
+.layer-list {
+  composes: main-left from '../application';
+  overflow: auto;
+}
+
+.layer-properties {
+  composes: main-right from '../application';
+  overflow: auto;
+}
+
+.canvas {
+  composes: main from '../application';
+  background: var(--neutral-300);
+  overflow: hidden;
+}
+
+.secondary-button, .primary-button {
+  border: none;
+  font-size: 0.8rem;
+  padding: 0.25rem 1rem;
+  border-radius: 0.1rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.secondary-button {
+  background: var(--neutral-400);
+  color: var(--neutral-800);
+}
+
+.secondary-button:hover {
+  background: var(--neutral-500);
+}
+
+.primary-button {
+  background: var(--blue-400);
+  color: var(--neutral-100);
+}
+
+.primary-button:hover {
+  background: var(--blue-500);
+}

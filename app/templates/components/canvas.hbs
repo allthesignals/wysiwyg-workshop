@@ -1,0 +1,36 @@
+<div local-class="canvas-workspace">
+  <div local-class="anchor-center">
+    {{! template-lint-disable no-inline-styles }}
+    <div
+      data-test-canvas
+      local-class="canvas"
+      {{styles this.backgroundStyles}}
+    ></div>
+
+    {{#each this.layers as |layer|}}
+      <RenderedLayer @layer={{layer}} />
+    {{/each}}
+  </div>
+
+  <BackgroundCanvas @height={{this.height}} @width={{this.width}} />
+
+  <div local-class="anchor-center" {{styles this.backgroundStyles}}>
+    {{#each this.layers as |layer|}}
+      <InteractiveLayer @layer={{layer}} />
+    {{/each}}
+  </div>
+
+  <CanvasPan
+    local-class="pan-tool"
+    @offset={{this.workspaceTranslation}}
+    @onPan={{action this.updateTranslation}}
+  />
+
+  <CanvasZoom
+    local-class="canvas-zoom"
+    @percent={{this.workspaceZoom}}
+    @action={{action (mut this.workspaceZoom)}}
+  />
+
+  <CanvasTools local-class="canvas-tools" />
+</div>

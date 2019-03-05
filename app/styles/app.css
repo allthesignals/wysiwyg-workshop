@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import "./colors.css";
+@import "./typography.css";
+
+body {
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  color: var(--neutral-800);
+  background: var(--neutral-200);
+}

@@ -1,0 +1,22 @@
+.announcer:not(.debug-mode) {
+  position: absolute;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.debug-mode {
+  display: block;
+  position: fixed;
+  max-width: 500px;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  border-radius: 3px;
+}

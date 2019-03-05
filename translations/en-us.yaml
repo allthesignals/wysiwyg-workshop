@@ -1,0 +1,47 @@
+layer_position: >
+  The dimensions are
+  left at {x}px,
+  top at {y}px,
+  height of {h}px,
+  width of {w}px,
+  rotation of {r} degrees.
+layer_created: 'A new layer was created.'
+deleted_layer: '{label} was deleted.'
+deleted_layers: >
+  {count, plural,
+    =0 {No layers were}
+    one {# layer was}
+    other {# layers were}
+  } deleted.
+moved_layer: '{label} was transformed.'
+change_dimension: >
+  {key, select,
+    w {width}
+    h {height}
+    x {left}
+    y {top}
+    r {rotation}
+    other {unknown}
+  } added {value} {key, select,
+    r {degrees}
+    other {pixels}
+  }.
+post_selection: >
+  Use arrow keys to move the {count, plural,
+    one {selected layer}
+    other {# selected layers}
+  }; escape to deselect all.
+selected_layer: '{label} was selected.'
+selected_layers: >
+  {count, plural,
+    =0 {No layers were}
+    one {# layer was}
+    other {# layers were}
+  } selected.
+deselected_layer: '{label} was deselected.'
+deselected_layers: >
+  {count, plural,
+    =0 {No layers were}
+    one {# layer was}
+    other {# layers were}
+  } deselected.

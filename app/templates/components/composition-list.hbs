@@ -1,0 +1,39 @@
+<ul local-class="list" data-test-composition-list>
+  {{#each @compositions as |composition|}}
+    <li
+      local-class="composition"
+      data-test-composition-item={{composition.id}}
+    >
+      {{! template-lint-disable no-inline-styles }}
+      <div
+        local-class="color-swatch"
+        style={{compute this.compositionColor composition.color}}
+      ></div>
+      <div local-class="details">
+        <h2 local-class="title">{{composition.title}}</h2>
+        <p local-class="dimensions">
+          {{composition.width}}px &times; {{composition.height}}px
+        </p>
+      </div>
+      <div local-class="actions">
+        <LinkTo
+          data-test-edit-link
+          local-class="link"
+          @params={{array "composition" composition}}>
+          Edit
+        </LinkTo>
+      </div>
+    </li>
+  {{/each}}
+  <li local-class="composition new-composition">
+    {{svg-jar "plus-circle" size="5" local-class="new-icon"}}
+    <LinkTo
+      data-test-new-composition
+      local-class="new-link"
+      @params={{array "new-composition"}}
+    >
+      <br>
+      New
+    </LinkTo>
+  </li>
+</ul>

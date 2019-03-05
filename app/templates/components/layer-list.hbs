@@ -1,0 +1,24 @@
+<div local-class="layer-list-container">
+  <h2 local-class="layer-header">Layers</h2>
+  <ul local-class="layer-list">
+    {{#each this.layers as |layer index|}}
+      {{#let (contains layer this.selected) as |selected|}}
+        <li
+          local-class="layer"
+          class={{if selected (local-class "layer-selected")}}
+        >
+          <span
+            data-test-layer={{index}}
+            data-test-layer-selected={{selected}}
+          >
+            {{#if layer.label}}
+              {{layer.label}}
+            {{else}}
+              Layer {{index}}
+            {{/if}}
+          </span>
+        </li>
+      {{/let}}
+    {{/each}}
+  </ul>
+</div>

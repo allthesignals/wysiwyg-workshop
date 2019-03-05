@@ -1,0 +1,16 @@
+.left { composes: left from './layer-properties';  }
+.center { composes: center from './layer-properties';  }
+.right { composes: right from './layer-properties';  }
+
+.std-input {
+  display: block;
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid var(--neutral-400);
+  font-size: 0.75rem;
+  padding: 0.2rem;
+}
+
+.input-label {
+  font-size: 0.75rem;
+}

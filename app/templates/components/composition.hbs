@@ -1,0 +1,45 @@
+<div data-test-composition local-class="composition">
+  <div local-class="header">
+    <div local-class="header-center">
+      <h1 local-class="title">{{@composition.title}}</h1>
+      <span local-class="edit-state">&nbsp;&mdash; edited</span>
+    </div>
+    <div local-class="actions">
+      <button
+        data-test-cancel
+        local-class="secondary-button"
+        {{action this.handleCancel}}
+      >
+        Cancel
+      </button>
+      <button
+        data-test-save
+        local-class="primary-button"
+        {{action this.handleSave}}
+      >
+        Save
+      </button>
+    </div>
+  </div>
+
+  <div local-class="layer-list">
+    <LayerList />
+  </div>
+
+  <div local-class="canvas">
+    <Canvas
+      @width={{@composition.width}}
+      @height={{@composition.height}}
+    />
+  </div>
+
+  <div local-class="layer-properties">
+    {{#with this.singlySelectedLayer as |layer|}}
+      <LayerProperties @layer={{layer}} />
+    {{/with}}
+  </div>
+
+  <CompositionShortcuts />
+</div>
+
+<AriaAnnouncer />

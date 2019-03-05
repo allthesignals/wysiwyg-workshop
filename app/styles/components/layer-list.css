@@ -1,0 +1,45 @@
+.layer-list-container {
+  --padding-amount: 0.5rem;
+}
+
+.layer-header {
+  font-size: 0.6rem;
+  padding: var(--padding-amount);
+  margin: 0;
+  border-bottom: 1px solid var(--neutral-400);
+  background: var(--neutral-300);
+  text-transform: uppercase;
+}
+
+.layer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.layer {
+  margin: 0;
+  font-size: 0.8rem;
+  padding: var(--padding-amount);
+  transition: background 0.2s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:not(.layer-selected):hover, &:not(.layer-selected):focus {
+    background: var(--neutral-300);
+  }
+
+  &-selected {
+    color: var(--neutral-100);
+    background: var(--blue-400);
+  }
+}
+
+.select-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}

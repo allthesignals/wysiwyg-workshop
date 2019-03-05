@@ -1,0 +1,40 @@
+<div local-class="layer-properties-container">
+  <h2 local-class="properties-header">Layer Properties</h2>
+  <div local-class="properties-panel">
+    <LayerPropertiesInput
+      @label="Left"
+      @value={{this.dimensions.x}}
+      @update={{action this.updateSprite "x"}}
+      local-class="row"
+      data-test-x-input
+    />
+    <LayerPropertiesInput
+      @label="Top"
+      @value={{this.dimensions.y}}
+      @update={{action this.updateSprite "y"}}
+      local-class="row"
+      data-test-y-input
+    />
+    <LayerPropertiesInput
+      @label="Width"
+      @value={{this.dimensions.w}}
+      @update={{action this.updateSprite "w"}}
+      local-class="row"
+      data-test-w-input
+    />
+    <LayerPropertiesInput
+      @label="Height"
+      @value={{this.dimensions.h}}
+      @update={{action this.updateSprite "h"}}
+      local-class="row"
+      data-test-h-input
+    />
+    <LayerPropertiesInput
+      @label="Rotation"
+      @value={{this.dimensions.r}}
+      @update={{action this.updateSprite "r"}}
+      local-class="row"
+      data-test-r-input
+    />
+  </div>
+</div>

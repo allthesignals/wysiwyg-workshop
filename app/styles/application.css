@@ -1,0 +1,44 @@
+.app-layout {
+  --panel-size: 14rem;
+  --header-height: 2.5rem;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  position: relative;
+  background: var(--neutral-200);
+  grid-template-columns:
+    [left] var(--panel-size)
+    [main] auto
+    [right] var(--panel-size);
+  grid-template-rows:
+    [header] var(--header-height)
+    [main] auto;
+  grid-template-areas:
+    "header header header"
+    "left main right";
+}
+
+.header {
+  grid-area: header;
+  background: linear-gradient(to bottom, var(--neutral-200), var(--neutral-300));
+  border-bottom: 1px solid var(--neutral-500);
+}
+
+.main {
+  grid-area: main;
+}
+
+.main-full {
+  grid-row: main / main;
+  grid-column: left / right;
+}
+
+.main-left {
+  grid-area: left;
+  border-right: 1px solid var(--neutral-400);
+}
+
+.main-right {
+  grid-area: right;
+  border-left: 1px solid var(--neutral-400);
+}
