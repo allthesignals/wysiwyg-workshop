@@ -5,6 +5,8 @@ import { inject as service } from '@ember-decorators/service';
 import { computed, action } from '@ember-decorators/object';
 import { Sprite } from '../utils/sprites';
 
+const { abs } = Math;
+
 @tagName('')
 export default class BackgroundCanvasComponent extends Component {
   isDrawingBox = false;
@@ -53,8 +55,14 @@ export default class BackgroundCanvasComponent extends Component {
 
   @computed('{startPosition,currentOffset}')
   get boxStyles() {
-    const [x, y] = this.startPosition;
-    const [width, height] = this.currentOffset;
+    const [startX, startY] = this.startPosition;
+    const [offsetX, offsetY] = this.currentOffset;
+
+    const width = abs(offsetX);
+    const height = abs(offsetY);
+
+    const x = offsetX > 0 ? startX : startX + offsetX;
+    const y = offsetY > 0 ? startY : startY + offsetY;
 
     return {
       position: 'absolute',
