@@ -1,1 +1,12 @@
-{{yield}}
+<div
+  local-class="canvas"
+  data-test-background-canvas
+>
+  {{#if this.isDrawingBox}}
+    <div
+      local-class="selection-box"
+      data-test-background-selection
+      {{styles this.boxStyles}}
+    ></div>
+  {{/if}}
+</div>
