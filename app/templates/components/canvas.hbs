@@ -7,9 +7,12 @@
       {{sprite-styles this.workspaceSprite}}
     ></div>
 
-    {{!-- {{#each this.layers as |layer|}}
-      <RenderedLayer @layer={{layer}} />
-    {{/each}} --}}
+    {{#each this.layers as |layer|}}
+      <RenderedLayer
+        @layer={{layer}}
+        @parentSprite={{this.workspaceSprite}}
+      />
+    {{/each}}
   </div>
 
   {{!-- <BackgroundCanvas @height={{this.height}} @width={{this.width}} /> --}}

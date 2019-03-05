@@ -2,7 +2,7 @@
   data-test-rendered-layer
   local-class="rendered-layer"
   {{styles @layer.styles}}
-  {{sprite-styles @layer.sprite}}
+  {{sprite-styles @layer.sprite @parentSprite}}
   ...attributes
 >
   {{@layer.text}}
