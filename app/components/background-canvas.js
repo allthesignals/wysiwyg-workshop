@@ -17,6 +17,7 @@ export default class BackgroundCanvasComponent extends Component {
   height;
   width;
 
+  @service canvasTools;
   @service layerSelection;
   @service layerState;
 
@@ -51,8 +52,21 @@ export default class BackgroundCanvasComponent extends Component {
     set(this, 'isDrawingBox', false);
 
     const drawnSprite = this.generateSelectionSprite(element, offset);
-    const intersectingLayers = this.layerState.filterBySprite(drawnSprite);
-    this.layerSelection.selectLayers(intersectingLayers);
+    this.handleDrawnSprite(drawnSprite);
+  }
+
+  handleDrawnSprite(sprite) {
+    if (this.canvasTools.isSelectTool) {
+      const intersectingLayers = this.layerState.filterBySprite(sprite);
+      this.layerSelection.selectLayers(intersectingLayers);
+    } else {
+      const text = 'New Text Layer';
+      const label = 'New Layer';
+      const layer = this.layerState.newLayer({ sprite, text, label });
+
+      this.canvasTools.chooseSelectTool();
+      this.layerSelection.selectLayer(layer);
+    }
   }
 
   @computed('{startPosition,currentOffset}')
