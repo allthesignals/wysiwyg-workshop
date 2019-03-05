@@ -8,6 +8,7 @@
     tabindex="0"
     local-class="layer-selector"
     aria-label="Select layer to move"
-    onclick={{action this.selectLayer}}
+    onkeydown={{action this.handleKeyDown}}
+    onmousedown={{action this.selectLayer}}
   ></button>
 </div>
