@@ -12,4 +12,13 @@
     onmousedown={{action this.selectLayer}}
     {{drag this.translate "layer-drag"}}
   ></button>
+
+  {{#if this.isSelected}}
+    <button
+      local-class="handle handle-right"
+      aria-label="Resize layer by the right handle"
+      data-test-handle="right"
+      {{drag this.resize "right"}}
+    ></button>
+  {{/if}}
 </div>

@@ -3,6 +3,7 @@ import { set } from '@ember/object';
 import { tagName } from '@ember-decorators/component';
 import { computed, action } from '@ember-decorators/object';
 import { inject as service } from '@ember-decorators/service';
+import { RIGHT } from '../utils/sprites';
 
 const SPACEBAR = 32;
 
@@ -33,6 +34,24 @@ export default class InteractiveLayerComponent extends Component {
     set(this, 'offsetSprite', sprite);
 
     if (event.type === 'mouseup') {
+      this.layerState.updateLayer(layer, { sprite });
+      set(this, 'offsetSprite', null);
+    }
+  }
+
+  @action
+  resize({ event, offset }) {
+    const { layer } = this;
+    const { type, shiftKey, metaKey } = event;
+
+    const sprite = layer.sprite.transformSize(offset, [RIGHT], {
+      applyOpposite: !!metaKey,
+      keepRatio: !!shiftKey
+    });
+
+    set(this, 'offsetSprite', sprite);
+
+    if (type === 'mouseup') {
       this.layerState.updateLayer(layer, { sprite });
       set(this, 'offsetSprite', null);
     }
